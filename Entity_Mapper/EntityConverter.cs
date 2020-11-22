@@ -16,6 +16,8 @@ namespace Entity_Mapper
 
         private List<string> ViewObjectNames = new List<string>();
 
+        private List<string> EntityTypes = new List<string>();
+
         public EntityConverter(string path)
         {
             var pathItens = path.Split("\\");
@@ -48,11 +50,18 @@ namespace Entity_Mapper
                         line[0] = line[0].Replace("\"", "");
                         line[0] = line[0].Replace("\t", "");
                         EntityNames.Add(line[0]);
+                        EntityTypes.Add(SetEntityTypes(line[1]));
+                    }
+                    else if (line[0].Contains("public") || line[0].Contains("protected") || line[0].Contains("private"))
+                    {
+                        EntityNames.Add(line[2]);
+                        EntityTypes.Add(SetEntityTypes(line[1]));
                     }
                     else
                     {
                         line[0] = line[0].Replace("\t", "");
                         EntityNames.Add(line[0]);
+                        EntityTypes.Add(SetEntityTypes(line[1]));
                     }
                 }
             }
@@ -79,20 +88,19 @@ namespace Entity_Mapper
 
         public void WriteFile()
         {
-            using (FileStream fs = new FileStream(FilePath + Guid.NewGuid().ToString() + FileName,
-                FileMode.Create))
+            using (FileStream fs = new FileStream(FilePath + DateTime.Now.ToFileTimeUtc() + FileName, FileMode.Create))
             using (StreamWriter sw = new StreamWriter(fs))
             {
-                foreach(string item in EntityNames)
+                for(int i = 0; i <= EntityNames.Count - 1; i++)
                 {
-                    sw.WriteLine(item);
+                    sw.WriteLine("public " + EntityTypes[i] + " " + EntityNames[i] + " { get; set; }");
                 }
 
                 sw.Write("\n");
 
-                foreach (string item in ViewObjectNames)
+                for (int i = 0; i <= ViewObjectNames.Count - 1; i++)
                 {
-                    sw.WriteLine(item);
+                    sw.WriteLine("public " + EntityTypes[i] + " " + ViewObjectNames[i] + " { get; set; }");
                 }
 
                 sw.Write("\n");
@@ -108,6 +116,26 @@ namespace Entity_Mapper
                 {
                     sw.WriteLine($"{ViewObjectNames[i]} = origin.{EntityNames[i]},");
                 }
+            }
+        }
+
+        private string SetEntityTypes(string type)
+        {
+            if(type.ToUpper().Contains("INTEGER"))
+            {
+                return "int";
+            }
+            else if(type.ToUpper().Contains("TIMESTAMP"))
+            {
+                return "DateTime";
+            }
+            else if (type.ToUpper().Contains("VARCHAR"))
+            {
+                return "string";
+            }
+            else
+            {
+                return type;
             }
         }
     }

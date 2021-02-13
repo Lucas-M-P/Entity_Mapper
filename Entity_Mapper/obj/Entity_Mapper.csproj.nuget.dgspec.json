@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luqui\\Entity Mapper\\Entity_Mapper\\Entity_Mapper\\Entity_Mapper.csproj": {}
+    "C:\\Users\\luqui\\Projetos\\EntityMapper\\Entity_Mapper\\Entity_Mapper\\Entity_Mapper.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luqui\\Entity Mapper\\Entity_Mapper\\Entity_Mapper\\Entity_Mapper.csproj": {
+    "C:\\Users\\luqui\\Projetos\\EntityMapper\\Entity_Mapper\\Entity_Mapper\\Entity_Mapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luqui\\Entity Mapper\\Entity_Mapper\\Entity_Mapper\\Entity_Mapper.csproj",
+        "projectUniqueName": "C:\\Users\\luqui\\Projetos\\EntityMapper\\Entity_Mapper\\Entity_Mapper\\Entity_Mapper.csproj",
         "projectName": "Entity_Mapper",
-        "projectPath": "C:\\Users\\luqui\\Entity Mapper\\Entity_Mapper\\Entity_Mapper\\Entity_Mapper.csproj",
+        "projectPath": "C:\\Users\\luqui\\Projetos\\EntityMapper\\Entity_Mapper\\Entity_Mapper\\Entity_Mapper.csproj",
         "packagesPath": "C:\\Users\\luqui\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luqui\\Entity Mapper\\Entity_Mapper\\Entity_Mapper\\obj\\",
+        "outputPath": "C:\\Users\\luqui\\Projetos\\EntityMapper\\Entity_Mapper\\Entity_Mapper\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luqui\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

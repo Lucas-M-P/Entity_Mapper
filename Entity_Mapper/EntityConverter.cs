@@ -100,6 +100,7 @@ namespace Entity_Mapper
 
                 for (int i = 0; i <= ViewObjectNames.Count - 1; i++)
                 {
+                    sw.WriteLine($"[DataMember(Order = {i}, Name = {ViewObjectNames[i]})]");
                     sw.WriteLine("public " + EntityTypes[i] + " " + ViewObjectNames[i] + " { get; set; }");
                 }
 
@@ -125,13 +126,17 @@ namespace Entity_Mapper
             {
                 return "int";
             }
-            else if(type.ToUpper().Contains("TIMESTAMP"))
+            else if(type.ToUpper().Contains("TIMESTAMP") || type.ToUpper().Contains("DATA"))
             {
                 return "DateTime";
             }
             else if (type.ToUpper().Contains("VARCHAR"))
             {
                 return "string";
+            }
+            else if (type.ToUpper().Contains("BOOLEAN"))
+            {
+                return "bool";
             }
             else
             {
